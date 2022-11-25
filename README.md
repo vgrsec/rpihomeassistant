@@ -11,6 +11,8 @@ https://www.home-assistant.io/docs/z-wave/controllers/
 dtoverlay=disable-bt
 enable_uart=1
 ```
+1. `sudo apt-get install git`
+1. git clone https://github.com/vgrsec/rpihomeassistant.git
 https://jugmac00.github.io/blog/how-to-run-a-dockerized-service-via-systemd/
 
 

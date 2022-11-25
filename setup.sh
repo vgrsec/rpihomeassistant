@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 ## This script configures a raspberry pi with a Z-Wave.Me RaZberry 7 Pro controller
 
@@ -24,7 +24,7 @@ apt-get update && apt-get upgrade -y
 ## Required on Raspbian
 systemctl disable hciuart
 ## Install Docker
-curl -sSL https://get.docker.com | sh
+apt-get install docker -y
 ## Allow pi to launch docker containers
 usermod -aG docker pi
 
