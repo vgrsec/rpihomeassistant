@@ -1,5 +1,5 @@
 [Unit]
-Description=Nginx Service
+Description=Home Assistant Service
 After=docker.service
 Requires=docker.service
 
@@ -8,14 +8,17 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker exec %n stop
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStartPre=/usr/bin/docker pull nginx:stable
-ExecStart=/usr/bin/docker run \
+ExecStartPre=/usr/bin/docker pull ghcr.io/home-assistant/home-assistant:stable
+ExecStart=/usr/bin/docker run 
     -d \
     --rm \
     --name %n \
     --restart=unless-stopped \
-    -v /usr/local/bin/docker/nginx/config:/config \
-    -p 80:80 \
+    --privileged \
+    -e TZ=America/New_York \
+    -v /usr/local/bin/docker/home-assistant:/config \
+    --network=host \
+    --device /dev/ttyAMA0:/dev/ttyAMA0 \
     ghcr.io/home-assistant/home-assistant:stable
 
 [Install]

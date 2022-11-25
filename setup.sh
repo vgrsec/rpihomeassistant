@@ -1,4 +1,4 @@
-!//bin/bash
+!/bin/bash
 
 ## This script configures a raspberry pi with a Z-Wave.Me RaZberry 7 Pro controller
 
@@ -28,6 +28,8 @@ curl -sSL https://get.docker.com | sh
 ## Allow pi to launch docker containers
 usermod -aG docker pi
 
+## Make directory for docker apps
+mkdir /usr/local/bin/docker
 ## Make config directory for home-assistant 
 mkdir /usr/local/bin/docker/home-assistant
 ## Make config directory for nginx
@@ -38,3 +40,6 @@ cp ./nginx-configs/docker.nginx.service /etc/systemd/system/docker.nginx.service
 
 systemctl enable docker.homeassistant
 systemctl enable docker.nginx
+
+systemctl start docker.homeassistant
+systemctl start docker.nginx
