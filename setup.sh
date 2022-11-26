@@ -24,7 +24,7 @@ apt-get update && apt-get upgrade -y
 ## Required on Raspbian
 systemctl disable hciuart
 ## Install Docker
-apt-get install docker -y
+apt-get install docker.io -y
 ## Allow pi to launch docker containers
 usermod -aG docker pi
 

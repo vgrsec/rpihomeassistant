@@ -9,17 +9,17 @@ Restart=always
 ExecStartPre=-/usr/bin/docker exec %n stop
 ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull ghcr.io/home-assistant/home-assistant:stable
-ExecStart=/usr/bin/docker run 
+ExecStart=/usr/bin/docker run \
     -d \
-    --rm \
-    --name %n \
+    --name ha \
     --restart=unless-stopped \
     --privileged \
     -e TZ=America/New_York \
     -v /usr/local/bin/docker/home-assistant:/config \
-    --network=host \
+    -p 8123:8123 \
     --device /dev/ttyAMA0:/dev/ttyAMA0 \
     ghcr.io/home-assistant/home-assistant:stable
 
 [Install]
 WantedBy=default.target
+
