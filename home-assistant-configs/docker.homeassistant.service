@@ -11,12 +11,11 @@ ExecStartPre=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull ghcr.io/home-assistant/home-assistant:stable
 ExecStart=/usr/bin/docker run \
     -d \
-    --name ha \
+    --name %n \
     --restart=unless-stopped \
     --privileged \
     -e TZ=America/New_York \
     -v /usr/local/bin/docker/home-assistant:/config \
-    -p 8123:8123 \
     --device /dev/ttyAMA0:/dev/ttyAMA0 \
     ghcr.io/home-assistant/home-assistant:stable
 

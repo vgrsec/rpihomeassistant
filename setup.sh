@@ -38,6 +38,10 @@ mkdir /usr/local/bin/docker/nginx
 cp ./home-assistant-configs/docker.homeassistant.service /etc/systemd/system/docker.homeassistant.service
 cp ./nginx-configs/docker.nginx.service /etc/systemd/system/docker.nginx.service
 
+systemctl reload docker.homeassistant.service 
+systemctl reload docker.nginx.service 
+
+
 systemctl enable docker.homeassistant
 systemctl enable docker.nginx
 
